@@ -22,6 +22,7 @@
       <Column Name="CMND" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="KHACHHANG_DATPHONG" Member="DATPHONGs" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="DATPHONG" />
+      <Association Name="KHACHHANG_DANHGIA" Member="DANHGIAs" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="DANHGIA" />
       <Association Name="NGUOIDUNG_KHACHHANG" Member="NGUOIDUNG" ThisKey="MaNguoiDung" OtherKey="MaNguoiDung" Type="NGUOIDUNG" IsForeignKey="true" />
     </Type>
   </Table>
@@ -40,17 +41,6 @@
       <Association Name="LOAIPHONG_PHONG" Member="PHONGs" ThisKey="MaLoaiPhong" OtherKey="MaLoaiPhong" Type="PHONG" />
     </Type>
   </Table>
-  <Table Name="dbo.NGUOIDUNG" Member="NGUOIDUNGs">
-    <Type Name="NGUOIDUNG">
-      <Column Name="MaNguoiDung" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenDangNhap" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MatKhau" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="VaiTroID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="NGUOIDUNG_KHACHHANG" Member="KHACHHANGs" ThisKey="MaNguoiDung" OtherKey="MaNguoiDung" Type="KHACHHANG" />
-      <Association Name="NGUOIDUNG_NHANVIEN" Member="NHANVIENs" ThisKey="MaNguoiDung" OtherKey="MaNguoiDung" Type="NHANVIEN" />
-      <Association Name="VAITRO_NGUOIDUNG" Member="VAITRO" ThisKey="VaiTroID" OtherKey="MaVaiTro" Type="VAITRO" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
     <Type Name="NHANVIEN">
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -59,20 +49,6 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="SoDienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="NGUOIDUNG_NHANVIEN" Member="NGUOIDUNG" ThisKey="MaNguoiDung" OtherKey="MaNguoiDung" Type="NGUOIDUNG" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PHONG" Member="PHONGs">
-    <Type Name="PHONG">
-      <Column Name="MaPhong" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaKhachSan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TenPhong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaLoaiPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaTien" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="MaTrangThai" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="PHONG_DATPHONG" Member="DATPHONGs" ThisKey="MaPhong" OtherKey="MaPhong" Type="DATPHONG" />
-      <Association Name="KHACHSAN_PHONG" Member="KHACHSAN" ThisKey="MaKhachSan" OtherKey="MaKhachSan" Type="KHACHSAN" IsForeignKey="true" />
-      <Association Name="LOAIPHONG_PHONG" Member="LOAIPHONG" ThisKey="MaLoaiPhong" OtherKey="MaLoaiPhong" Type="LOAIPHONG" IsForeignKey="true" />
-      <Association Name="TRANGTHAIPHONG_PHONG" Member="TRANGTHAIPHONG" ThisKey="MaTrangThai" OtherKey="MaTrangThai" Type="TRANGTHAIPHONG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.THANHTOAN" Member="THANHTOANs">
@@ -96,6 +72,55 @@
       <Column Name="MaVaiTro" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenVaiTro" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="VAITRO_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="MaVaiTro" OtherKey="VaiTroID" Type="NGUOIDUNG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHONG" Member="PHONGs">
+    <Type Name="PHONG">
+      <Column Name="MaPhong" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaKhachSan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenPhong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaLoaiPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaTien" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MaTrangThai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="HinhAnh" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Association Name="PHONG_DATPHONG" Member="DATPHONGs" ThisKey="MaPhong" OtherKey="MaPhong" Type="DATPHONG" />
+      <Association Name="PHONG_ANHPHONG" Member="ANHPHONGs" ThisKey="MaPhong" OtherKey="MaPhong" Type="ANHPHONG" />
+      <Association Name="PHONG_DANHGIA" Member="DANHGIAs" ThisKey="MaPhong" OtherKey="MaPhong" Type="DANHGIA" />
+      <Association Name="KHACHSAN_PHONG" Member="KHACHSAN" ThisKey="MaKhachSan" OtherKey="MaKhachSan" Type="KHACHSAN" IsForeignKey="true" />
+      <Association Name="LOAIPHONG_PHONG" Member="LOAIPHONG" ThisKey="MaLoaiPhong" OtherKey="MaLoaiPhong" Type="LOAIPHONG" IsForeignKey="true" />
+      <Association Name="TRANGTHAIPHONG_PHONG" Member="TRANGTHAIPHONG" ThisKey="MaTrangThai" OtherKey="MaTrangThai" Type="TRANGTHAIPHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ANHPHONG" Member="ANHPHONGs">
+    <Type Name="ANHPHONG">
+      <Column Name="MaAnh" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DuongDan" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="MaPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PHONG_ANHPHONG" Member="PHONG" ThisKey="MaPhong" OtherKey="MaPhong" Type="PHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DANHGIA" Member="DANHGIAs">
+    <Type Name="DANHGIA">
+      <Column Name="MaDanhGia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoiDungDanhGia" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="SoSao" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaPhong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaKhachHang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="KHACHHANG_DANHGIA" Member="KHACHHANG" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="KHACHHANG" IsForeignKey="true" />
+      <Association Name="PHONG_DANHGIA" Member="PHONG" ThisKey="MaPhong" OtherKey="MaPhong" Type="PHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NGUOIDUNG" Member="NGUOIDUNGs">
+    <Type Name="NGUOIDUNG">
+      <Column Name="MaNguoiDung" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenDangNhap" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="VaiTroID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="avatar" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="NGUOIDUNG_KHACHHANG" Member="KHACHHANGs" ThisKey="MaNguoiDung" OtherKey="MaNguoiDung" Type="KHACHHANG" />
+      <Association Name="NGUOIDUNG_NHANVIEN" Member="NHANVIENs" ThisKey="MaNguoiDung" OtherKey="MaNguoiDung" Type="NHANVIEN" />
+      <Association Name="VAITRO_NGUOIDUNG" Member="VAITRO" ThisKey="VaiTroID" OtherKey="MaVaiTro" Type="VAITRO" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

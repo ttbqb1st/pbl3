@@ -49,9 +49,13 @@
   <ItemGroup>
     <Compile Include="BLL\handle.cs" />
     <Compile Include="DAL\data.cs" />
-    <Compile Include="DTO\Khach_hang.cs" />
-    <Compile Include="DTO\Nguoi_dung.cs" />
-    <Compile Include="DTO\Vai_tro.cs" />
+    <Compile Include="DTO\Customer_view_info.cs" />
+    <Compile Include="DTO\Hotel.cs" />
+    <Compile Include="DTO\Room_view.cs" />
+    <Compile Include="DTO\Session.cs" />
+    <Compile Include="DTO\User.cs" />
+    <Compile Include="DTO\Room.cs" />
+    <Compile Include="DTO\Role.cs" />
     <Compile Include="Presentation\DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,6 +66,18 @@
     </Compile>
     <Compile Include="Presentation\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Home%28order page%29.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Presentation\Home%28order page%29.Designer.cs">
+      <DependentUpon>Home%28order page%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Presentation\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Log_in.cs">
       <SubType>Form</SubType>
@@ -78,6 +94,12 @@
     <Compile Include="Presentation\Main_screen.Designer.cs">
       <DependentUpon>Main_screen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Search.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Presentation\Search.Designer.cs">
+      <DependentUpon>Search.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Presentation\Sign_up.cs">
@@ -89,22 +111,26 @@
     <EmbeddedResource Include="Presentation\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Home%28order page%29.resx">
+      <DependentUpon>Home%28order page%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Log_in.resx">
       <DependentUpon>Log_in.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Main_screen.resx">
       <DependentUpon>Main_screen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Search.resx">
+      <DependentUpon>Search.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Presentation\Sign_up.resx">
       <DependentUpon>Sign_up.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +146,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -200,6 +231,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-hotel-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\room1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-and-right-arrows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\room2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favourite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
